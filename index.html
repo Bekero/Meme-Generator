@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="onInit()">
+    <h2>Gallery</h2>
+    <section class="gallery-container">
+        <div class="photos">
+        </div>
+    </section>
+
+    <div class="editor-container" hidden>
+        <h2>Canvas</h2>
+        <div class="tool-bar">
+            <canvas id="my-canvas" height="450" width="450"></canvas>
+            <label class="text">Upper Text :</label>
+            <input oninput="renderMeme()" type="text" class="upper-text">
+            <label class="text">Lower Text :</label>
+            <input oninput="renderMeme()" type="text" class="lower-text">
+            <label class="text">Text Color: </label>
+            <input onchange="getProps({txtColor: this.value})" type="color" class="text-color">
+            <label class="text">Border Text Color: </label>
+            <input onchange="getProps({borderTxtColor: this.value})" type="color" class="border-text-color">
+        </div>
+        <h4>Font Size
+            <button onclick="decreaseFont()" class="font-size-btn"><img class="icon icon-decrease"
+                    src="icons/decrease-icon.png"></button>
+            <!-- Font Size :<span class="font-number"></span> -->
+            <button onclick="increaseFont()" class="font-size-btn"><img class="icon icon-decrease"
+                    src="icons/increase-icon.png"></button>
+        </h4>
+    </div>
+
+    <script src="js/meme.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/gallery.controller.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

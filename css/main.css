@@ -1,0 +1,63 @@
+body {
+    background-color: slategray;
+    margin: 0;
+    height: 100vh;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    background-color: rgb(139, 134, 134);
+}
+
+.tool-bar {
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-bar > :not(:first-child) {
+    display: inline;
+    width: 130px;
+}
+
+.editor-container {
+    background-color: rgb(129, 136, 142);
+    height: 75vh;
+}
+
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 4px;
+}
+
+.gallery-container .photos  {
+    flex-basis: 150px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+}
+
+.gallery-container .photos img{
+    margin: 20px;
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+    color: white;
+}
+
+.font-number {
+    font-weight: bold;
+}
+
+.font-size-btn {
+    background-color: rgba(219, 193, 193, 0);
+    cursor: pointer;
+    border: none;
+}
+
+.icon {
+    width: 30px;
+}
