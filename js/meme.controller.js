@@ -68,11 +68,18 @@ function drawLowerText(x, y) {
 function increaseFont(elFontUp) {
     var meme = getMeme()
     meme.lines[0].fontSize += 5
+    displayFontOnPage()
     console.log('meme.lines[0].fontSize : ',meme.lines[0].fontSize);
 }
 
 function decreaseFont(elFontDown) {
     var meme = getMeme()
     meme.lines[0].fontSize -= 5
+    displayFontOnPage()
     console.log('meme.fontSize : ',meme.fontSize);
+}
+
+function displayFontOnPage() {
+    var meme = getMeme()
+document.querySelector('.font-number').innerText = meme.lines[0].fontSize
 }
