@@ -10,31 +10,40 @@
 </head>
 
 <body onload="onInit()">
-    <h2>Gallery</h2>
+    <header class="main-header">
+        <div class="header-container main-layout flex align-center space-between">
+            <div onclick="backToGallery()" class="logo">Meme Generator</div>
+            <ul class="main-nav-list flex clean-list">
+                <li onclick="backToGallery()"><a href="#">Gallery</a></li>
+                <li onclick="goToAbout()"><a href="#">About Me</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <h2 class="gallery-h2">Gallery</h2>
     <section class="gallery-container">
         <div class="photos">
         </div>
     </section>
-
+    
     <div class="editor-container" hidden>
-        <h2>Canvas</h2>
         <div class="tool-bar">
+            <h2 class="canvas-h2">Canvas</h2>
             <canvas id="my-canvas" height="450" width="450"></canvas>
-            <label class="text">Upper Text :</label>
-            <input oninput="renderMeme()" type="text" class="upper-text">
-            <label class="text">Lower Text :</label>
-            <input oninput="renderMeme()" type="text" class="lower-text">
-            <label class="text">Text Color: </label>
-            <input onchange="getProps({txtColor: this.value})" type="color" class="text-color">
-            <label class="text">Border Text Color: </label>
-            <input onchange="getProps({borderTxtColor: this.value})" type="color" class="border-text-color">
-        </div>
-        <h4>Font Size</h4>
-            <span class="font-number">70</span>
-            <button onclick="decreaseFont()" class="font-size-btn"><img class="icon icon-decrease"
+            <div class="props">
+                <input oninput="renderMeme()" type="text" placeholder="Enter UpperText Here.." class="upper-text">
+                <input oninput="renderMeme()" type="text" placeholder="Enter LowerText Here.." class="lower-text">
+                <label class="text">Text Color: </label>
+                <input onchange="getProps({txtColor: this.value})" type="color" class="text-color">
+                <label class="text">Border Text Color: </label>
+                <input onchange="getProps({borderTxtColor: this.value})" type="color" class="border-text-color">
+                <button onclick="decreaseFont()" class="font-size-btn"><img class="icon icon-decrease"
                     src="icons/decrease-icon.png"></button>
-            <button onclick="increaseFont()" class="font-size-btn"><img class="icon icon-decrease"
-                    src="icons/increase-icon.png"></button>
+                    <span class="font-number">70</span>
+                <button onclick="increaseFont()" class="font-size-btn"><img class="icon icon-decrease"
+                        src="icons/increase-icon.png"></button>
+            </div>
+        </div>
     </div>
 
     <script src="js/meme.service.js"></script>

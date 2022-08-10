@@ -8,10 +8,18 @@ function renderMeme() {
 
 function imgClicked(clickedImg) {
     var elEditor = document.querySelector('.editor-container')
+    var elGallery = document.querySelector('.gallery-container')
+    var elH2Canvas = document.querySelector('.canvas-h2')
+    var elH2Gallery = document.querySelector('.gallery-h2')
+    
     var img = gImgs.find(img => {
         if (img.id === clickedImg) return img
     })
     elEditor.style.display = 'block';
+    elH2Canvas.style.display= 'flex'
+
+    elH2Gallery.style.display= 'none'
+    elGallery.style.display = 'none';
     drawImg(img.id)
 }
 
@@ -25,11 +33,8 @@ function drawImg(imgId) {
         drawLowerText(gElCanvas.width / 2, gElCanvas.height - 70)
     };
     meme.selectedImgId = imgId
-    console.log('imgId : ', imgId);
-    console.log('meme.selectedImgId : ', meme.selectedImgId);
     gElCanvas.height = img.height
     gElCanvas.width = img.width
-    //meme.lines[0].txt, 
 }
 
 function drawUpperText(x, y) {
