@@ -2,6 +2,7 @@
 
 // ImageId , Text
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+var gMeme
 var gImgs = [
     { id: 1, url: 'imgs/1.jpg', keywords: ['funny', 'cat'] },
     { id: 2, url: 'imgs/2.jpg', keywords: ['funny', 'cat'] },
@@ -22,25 +23,72 @@ var gImgs = [
     { id: 17, url: 'imgs/17.jpg', keywords: ['funny', 'cat'] },
     { id: 18, url: 'imgs/18.jpg', keywords: ['funny', 'cat'] }
 ];
-var gMeme = {
-    selectedImgId: 1,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            upperTxt: '',
-            lowerTxt: '',
-            size: 20,
-            align: 'left',
-            fontSize: 70
-            // color: 'red'
-        }
-    ]
+
+function createMeme() {
+    var canvas = getCanvas()
+    gMeme = {
+        selectedImgId: 1,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: 'Upper Text',
+                size: 20,
+                align: 'center',
+                fontSize: 70,
+                color: 'red',
+                posX: canvas.width / 2,
+                posY: 80
+            },
+            {
+                txt: 'Lower Text',
+                size: 20,
+                align: 'center',
+                fontSize: 70,
+                color: 'red',
+                posX: canvas.width / 2,
+                posY: canvas.height - 80
+            }
+        ]
+    }
+}
+// var gMeme = {
+//     selectedImgId: 1,
+//     selectedLineIdx: 0,
+//     lines: [
+//         {
+//             upperTxt: '',
+//             lowerTxt: '',
+//             size: 20,
+//             align: 'center',
+//             fontSize: 70,
+//             color: 'red'
+//         }
+//     ]
+// }
+
+function setChangeLine() {
+    var lineIdx = gMeme.selectedLineIdx
+    if(lineIdx < gMeme.lines.length - 1) gMeme.selectedLineIdx++
+    // if(lineIdx >= gMeme.lines.length - 1 || lineIdx < 0) gMeme.selectedLineIdx = 0
+    else gMeme.selectedLineIdx = 0
+
+    // else gMeme.selectedLineIdx++
+}
+
+function setAlignLeft() {
+    gMeme.lines[0].align = 'left'
+}
+function setAlignMiddle() {
+    gMeme.lines[0].align = 'center'
+}
+function setAlignRight() {
+    gMeme.lines[0].align = 'right'
+
 }
 
 function getMeme() {
     return gMeme
 }
-
 
 function getProps(props = {}) {
     gMeme = {
@@ -49,5 +97,4 @@ function getProps(props = {}) {
     }
     // meme.lines[0].upperTxt = upperText
     // meme.lines[0].lowerTxt = lowerText
-    console.log('gMeme : ',gMeme);
 }

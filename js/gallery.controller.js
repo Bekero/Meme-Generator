@@ -5,6 +5,7 @@ function renderGallery() {
     var elGallery = document.querySelector('.photos')
     gImgs.forEach(img => {
         strHtmls += `<img onclick="imgClicked(${img.id})" src="${img.url}">`
+        console.log('strHtmls : ',strHtmls);
     })
     elGallery.innerHTML = strHtmls
 }
@@ -12,7 +13,7 @@ function renderGallery() {
 function backToGallery() {
     var elEditor = document.querySelector('.editor-container')
     var elGallery = document.querySelector('.gallery-container')
-    var elH2Canvas = document.querySelector('.canvas-h2')
+    // var elH2Canvas = document.querySelector('.canvas-h2')
     var elH2Gallery = document.querySelector('.gallery-h2')
 
 
@@ -20,6 +21,6 @@ function backToGallery() {
     elGallery.style.display = 'block';
     
     elH2Canvas.style.display= 'none'
-    elH2Gallery.style.display= 'block'
+    elH2Gallery.style.display= 'flex'
 
 }
