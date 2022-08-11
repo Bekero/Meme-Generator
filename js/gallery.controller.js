@@ -13,7 +13,7 @@ function renderGallery() {
 function backToGallery() {
     var elEditor = document.querySelector('.editor-container')
     var elGallery = document.querySelector('.gallery-container')
-    // var elH2Canvas = document.querySelector('.canvas-h2')
+    var elH2Canvas = document.querySelector('.canvas-h2')
     var elH2Gallery = document.querySelector('.gallery-h2')
 
 
