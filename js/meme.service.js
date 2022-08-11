@@ -31,7 +31,7 @@ function createMeme() {
         selectedLineIdx: 0,
         lines: [
             {
-                txt: 'Upper Text',
+                txt: 'Type Here',
                 size: 20,
                 align: 'center',
                 fontSize: 70,
@@ -40,7 +40,7 @@ function createMeme() {
                 posY: 80
             },
             {
-                txt: 'Lower Text',
+                txt: 'Type Here',
                 size: 20,
                 align: 'center',
                 fontSize: 70,
@@ -68,7 +68,7 @@ function createMeme() {
 
 function setChangeLine() {
     var lineIdx = gMeme.selectedLineIdx
-    if(lineIdx < gMeme.lines.length - 1) gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx < gMeme.lines.length - 1) gMeme.selectedLineIdx++
     // if(lineIdx >= gMeme.lines.length - 1 || lineIdx < 0) gMeme.selectedLineIdx = 0
     else gMeme.selectedLineIdx = 0
 

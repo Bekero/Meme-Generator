@@ -30,17 +30,16 @@ function drawImg(imgId) {
         gCtx.drawImage(img, 0, 0)
         // drawUpperText(gElCanvas.width / 2, gElCanvas.height - 410)
         meme.lines.map((line, idx) => {
-            return drawUpperText(line.txt, idx)
+            return drawText(line.txt, idx)
         })
-        // drawLowerText(gElCanvas.width / 2, gElCanvas.height - 70)
     };
     meme.selectedImgId = imgId
     gElCanvas.height = img.height
     gElCanvas.width = img.width
 }
 
-function drawUpperText(txt, lineIdx) {
-    var txt = document.querySelector('.upper-text').value
+function drawText(txt, lineIdx) {
+    // var txt = document.querySelector('.upper-text').value
     var canvas = getCanvas()
     var meme = getMeme();
     gCtx.beginPath();
@@ -124,6 +123,7 @@ function alignToRight() {
 function addLine() {
     var meme = getMeme()
     var canvas = getCanvas()
+    meme.selectedLineIdx = meme.lines.length - 1
     meme.lines[meme.lines.length] =
     {
         txt: 'Type Here',
@@ -134,7 +134,6 @@ function addLine() {
         posX: canvas.width / 2,
         posY: canvas.height /2
     }
-    meme.selectedLineIdx = meme.lines.length - 1
     meme.lines[meme.selectedLineIdx].txt = ''
     renderMeme()
 }
@@ -143,6 +142,7 @@ function setText() {
     var meme = getMeme()
     if(!meme.lines.length) return
     var text = document.querySelector('.upper-text').value
+    console.log('meme.lines[meme.selectedLineIdx].txt : ',meme.lines[meme.selectedLineIdx].txt);
     meme.lines[meme.selectedLineIdx].txt = text
     renderMeme()
 }
