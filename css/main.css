@@ -113,14 +113,6 @@ h2,
     gap: 4px;
 }
 
-.gallery-container .photos {
-    /* flex-basis: 150px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100px; */
-} 
-
 .gallery-container .photos img {
     margin: 20px;
     width: 190px;
@@ -136,7 +128,6 @@ h2,
 /* Main - Canvas */
 
 .editor-container {
-    /* background-color: rgb(129, 136, 142); */
     height: 75vh;
 }
 
@@ -147,8 +138,6 @@ h2,
 }
 
 .tool-bar .props {
-    /* display: flex;
-    background-color: var(--clr3); */
     display: inline;
     background-color: #4c6c5c;
     flex-direction: column;
@@ -162,10 +151,17 @@ h2,
     padding: 2px;
 }
 
-.tool-bar .upper-text {
+.tool-bar .main-text {
     cursor: revert;
     width: 160px;
     height: 50px;
+}
+
+.tool-bar .download-btn  {
+    cursor: revert;
+    font-weight: bold;
+    width: 106px;
+    height: 30px
 }
 
 

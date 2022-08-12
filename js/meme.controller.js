@@ -1,5 +1,20 @@
 'use strict'
 
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+
+var gElCanvas
+var gCtx
+
+function onInit() {
+    gElCanvas = document.querySelector('#my-canvas');
+    gCtx = gElCanvas.getContext('2d');
+    addMouseListeners()
+    addTouchListeners()
+    renderGallery()
+    createMeme()
+    renderMeme()
+}
+
 function renderMeme() {
     var meme = getMeme()
     drawImg(meme.selectedImgId)
@@ -15,7 +30,7 @@ function imgClicked(clickedImg) {
         if (img.id === clickedImg) return img
     })
     elEditor.style.display = 'block';
-    // elH2Canvas.style.display= 'flex'
+    elH2Canvas.style.display = 'flex'
 
     elH2Gallery.style.display = 'none'
     elGallery.style.display = 'none';
@@ -39,84 +54,82 @@ function drawImg(imgId) {
 }
 
 function drawText(txt, lineIdx) {
-    // var txt = document.querySelector('.upper-text').value
     var canvas = getCanvas()
     var meme = getMeme();
-    gCtx.beginPath();
     var fontSize = meme.lines[lineIdx].fontSize
+    gCtx.beginPath();
     gCtx.textBaseline = 'middle';
     gCtx.textAlign = meme.lines[lineIdx].align;
     gCtx.lineWidth = 2;
     gCtx.font = fontSize + 'px impact';
-    gCtx.fillStyle = meme.lines[lineIdx].color;
+    gCtx.fillStyle = meme.lines[lineIdx].txtColor;
+    gCtx.strokeStyle = meme.lines[lineIdx].borderColor;
 
     if (lineIdx === 0) {
         gCtx.fillText(txt, canvas.width / 2, 40);
-        console.log('0')
+        gCtx.strokeText(txt, canvas.width / 2, 40);
     }
     else if (lineIdx === 1) {
         gCtx.fillText(txt, canvas.width / 2, canvas.height - 40);
-        console.log('1')
+        gCtx.strokeText(txt, canvas.width / 2, canvas.height - 40);
     }
-    else gCtx.fillText(txt, canvas.width / 2, canvas.height / 2);
-    console.log('0')
-
-    // if(lineIdx === 0) {
-    //     gCtx.fillText(txt, meme.lines[0].posX, meme.lines[lineIdx].posY);
-    // }
-    // else if(lineIdx === 1) {
-    //     gCtx.fillText(txt, meme.lines[1].posX, meme.lines[lineIdx].posY);
-    //     // gCtx.fillText(txt, x, y);
-    // }
-    // else {
-    //     gCtx.fillText(txt, meme.lines[1].posX, meme.lines[lineIdx].posY);
-        
-    // }
-    // gCtx.fillText(txt, x, y);
-    // gCtx.strokeStyle = meme.lines[lineIdx].borderTxtColor;
-    // gCtx.strokeText(txt, x, y);
-    // meme.lines[lineIdx].txt = txt;
+    else {
+        gCtx.fillText(txt, canvas.width / 2, canvas.height / 2);
+        gCtx.strokeText(txt, canvas.width / 2, canvas.height / 2);
+    }
     gCtx.closePath();
 }
 
-// function drawLowerText(x, y) {
-//     var txt = document.querySelector('.lower-text').value
-//     var meme = getMeme();
-//     gCtx.beginPath();
-//     gCtx.textBaseline = 'middle';
-//     gCtx.textAlign = 'center';
-//     gCtx.lineWidth = 2;
-//     gCtx.font = '80px impact';
-//     gCtx.fillStyle = meme.txtColor;
-//     gCtx.fillText(txt, x, y);
-//     gCtx.strokeStyle = meme.borderTxtColor;
-//     gCtx.strokeText(txt, x, y);
-//     meme.lines[0].lowerTxt = txt;
-//     gCtx.closePath();
-// }
-
-function increaseFont(elFontUp) {
+function setText() {
     var meme = getMeme()
-    meme.lines[0].fontSize += 5
-    displayFontOnPage()
+    if (!meme.lines.length) return
+    var text = document.querySelector('.main-text').value
+    meme.lines[meme.selectedLineIdx].txt = text
+    renderMeme()
+}
+function addTextColor(color) {
+    setTextColor(color)
+    renderMeme()
 }
 
-function decreaseFont(elFontDown) {
+function addBorderColor(borderColor) {
+    setBorderColor(borderColor)
+    renderMeme()
+}
+
+function increaseFont() {
+    setIncreaseFont()
     var meme = getMeme()
-    meme.lines[0].fontSize -= 5
-    displayFontOnPage()
+    document.querySelector('.font-number').innerText = meme.lines[meme.selectedLineIdx].fontSize
+    renderMeme()
+}
+
+function decreaseFont() {
+    var meme = getMeme()
+    setDecreaseFont()
+    document.querySelector('.font-number').innerText = meme.lines[meme.selectedLineIdx].fontSize
+    renderMeme()
 }
 
 function alignToLeft() {
     setAlignLeft()
     renderMeme()
 }
+
 function alignToMiddle() {
     setAlignMiddle()
     renderMeme()
 }
+
 function alignToRight() {
     setAlignRight()
+    renderMeme()
+}
+
+function clearCanvas() {
+    setClearCanvas()
+    removeLine()
+    drawImg(gMeme.selectedImgId)
     renderMeme()
 }
 
@@ -132,28 +145,49 @@ function addLine() {
         fontSize: 70,
         color: 'red',
         posX: canvas.width / 2,
-        posY: canvas.height /2
+        posY: canvas.height / 2
     }
     meme.lines[meme.selectedLineIdx].txt = ''
     renderMeme()
 }
 
-function setText() {
-    var meme = getMeme()
-    if(!meme.lines.length) return
-    var text = document.querySelector('.upper-text').value
-    console.log('meme.lines[meme.selectedLineIdx].txt : ',meme.lines[meme.selectedLineIdx].txt);
-    meme.lines[meme.selectedLineIdx].txt = text
-    renderMeme()
-}
-
 function changeLine() {
     setChangeLine()
-    document.querySelector('.upper-text').value = gMeme.lines[gMeme.selectedLineIdx].txt
+    document.querySelector('.main-text').value = gMeme.lines[gMeme.selectedLineIdx].txt
     renderMeme()
 }
 
-function displayFontOnPage() {
-    var meme = getMeme()
-    document.querySelector('.font-number').innerText = meme.lines[0].fontSize
+function onDown() {
+console.log('Finish This!!')
+}
+
+function onMove() {
+console.log('Finish This!!')
+}
+
+function onUp() {
+console.log('Finish This!!')
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousedown', onDown)//Mouse Press Down
+    gElCanvas.addEventListener('mousemove', onMove)//Mouse moves
+    gElCanvas.addEventListener('mouseup', onUp)//Mouse Stops Pressing
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchend', onUp)
+}
+
+function downloadCanvas(elLink) {
+    console.log('elLink : ', elLink);
+    const data = gElCanvas.toDataURL();
+    elLink.href = data;
+    elLink.download = 'my-canvas';
+}
+
+function getCanvas() {
+    return gElCanvas
 }
