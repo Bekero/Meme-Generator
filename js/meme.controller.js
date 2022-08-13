@@ -4,7 +4,8 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 const randomSentences = ['I’ll be there', 'Holy Molly', 'Thats Cool Man',
     'Really?', 'thats stupid', 'Maybe you’re right.', 'nah...',
     'Nah mate', 'Ok thats funny', 'SMORT', 'Yea, but why?',
-    'Sheeeeeeesh', 'C\'mon man', 'Really?', 'Yes!', 'Nah', 'Thats right', 'Thats not good']
+    'Sheeeeeeesh', 'C\'mon man', 'Really?', 'Yes!', 'Nah', 'Thats right', 'Thats not good',
+    'Its cool', 'Pineapple-Pen!', 'Is that you', 'Donald Trump !!', 'Toilet paper', 'Im Happy', 'Oh no!', 'Flikamora', 'Are you ready ?', 'Yheayyyy']
 var gElCanvas
 var gCtx
 
