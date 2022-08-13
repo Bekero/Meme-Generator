@@ -1,13 +1,17 @@
 'use strict'
 
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
-
+const randomSentences = ['I’ll be there', 'Holy Molly', 'Thats Cool Man',
+    'Really?', 'thats stupid', 'Maybe you’re right.', 'nah...',
+    'Nah mate', 'Ok thats funny', 'SMORT', 'Yea, but why?',
+    'Sheeeeeeesh', 'C\'mon man', 'Really?', 'Yes!', 'Nah', 'Thats right', 'Thats not good']
 var gElCanvas
 var gCtx
 
 function onInit() {
     gElCanvas = document.querySelector('#my-canvas');
     gCtx = gElCanvas.getContext('2d');
+    showGallery()
     addMouseListeners()
     addTouchListeners()
     renderGallery()
@@ -20,7 +24,7 @@ function renderMeme() {
     drawImg(meme.selectedImgId)
 }
 
-function imgClicked(clickedImg) {
+function hideGallery(clickedImg) {
     var elEditor = document.querySelector('.editor-container')
     var elGallery = document.querySelector('.gallery-container')
     var elH2Canvas = document.querySelector('.canvas-h2')
@@ -43,7 +47,6 @@ function drawImg(imgId) {
     img.src = `imgs/${imgId}.jpg`
     img.onload = () => {
         gCtx.drawImage(img, 0, 0)
-        // drawUpperText(gElCanvas.width / 2, gElCanvas.height - 410)
         meme.lines.map((line, idx) => {
             return drawText(line.txt, idx)
         })
@@ -157,16 +160,43 @@ function changeLine() {
     renderMeme()
 }
 
+function renderRandomMeme() {
+    let randMeme = setRandomMeme()
+    drawImg(randMeme[0].id)
+    randomTexts()
+    hideGallery(randMeme[0].id)
+    renderMeme()
+}
+
+function randomTexts() {
+    const randomLines = getRandomInt(1, 3)
+    if (randomLines === 1) {
+        gMeme.lines[0].txt = randomSentences[getRandomInt(0, randomSentences.length)]
+        gMeme.lines[0].txtColor = getRandomColor()
+        gMeme.lines[0].borderColor = getRandomColor()
+        gMeme.lines[0].fontSize = getRandomInt(15, 41)
+    } else {
+        gMeme.lines[0].txt = randomSentences[getRandomInt(0, randomSentences.length)]
+        gMeme.lines[0].txtColor = getRandomColor()
+        gMeme.lines[0].borderColor = getRandomColor()
+        gMeme.lines[0].fontSize = getRandomInt(22, 55)
+        gMeme.lines[1].txt = randomSentences[getRandomInt(0, randomSentences.length)]
+        gMeme.lines[1].txtColor = getRandomColor()
+        gMeme.lines[1].borderColor = getRandomColor()
+        gMeme.lines[1].fontSize = getRandomInt(15, 41)
+    }
+}
+
 function onDown() {
-console.log('Finish This!!')
+    // console.log('Finish This!!')
 }
 
 function onMove() {
-console.log('Finish This!!')
+    // console.log('Finish This!!')
 }
 
 function onUp() {
-console.log('Finish This!!')
+    // console.log('Finish This!!')
 }
 
 function addMouseListeners() {
@@ -182,7 +212,6 @@ function addTouchListeners() {
 }
 
 function downloadCanvas(elLink) {
-    console.log('elLink : ', elLink);
     const data = gElCanvas.toDataURL();
     elLink.href = data;
     elLink.download = 'my-canvas';

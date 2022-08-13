@@ -30,17 +30,17 @@ function createMeme(id) {
         selectedLineIdx: 0,
         lines: [
             {
-                txt: 'Type Here',
+                txt: '',
                 size: 20,
                 align: 'center',
-                fontSize: 70,
+                fontSize: 50,
                 txtColor: 'white',
                 borderColor: 'black',
                 posX: canvas.width / 2,
                 posY: 80
             },
             {
-                txt: 'Type Here',
+                txt: '',
                 size: 20,
                 align: 'center',
                 fontSize: 70,
@@ -109,11 +109,23 @@ function removeLine() {
 function setChangeLine() {
     if (gMeme.selectedLineIdx < gMeme.lines.length - 1) gMeme.selectedLineIdx++
     else gMeme.selectedLineIdx = 0
-    // var lineIdx = gMeme.selectedLineIdx
-    // if(lineIdx >= gMeme.lines.length - 1 || lineIdx < 0) gMeme.selectedLineIdx = 0
-    // else gMeme.selectedLineIdx++
 }
 
+function setRandomMeme() {
+    let shuffleMemes = shuffle(gImgs)
+    let randMeme = shuffleMemes.splice(gImgs.length - 1, 1)
+    return randMeme
+}
+
+function getRandomWords() {
+    let shuffledWords = shuffle(gTexts)
+    let wordsForDisplay = ''
+    for (var i = 0; i<3; i++) {
+        wordsForDisplay += shuffledWords.splice(shuffledWords.length - 1, 1) + ' '
+    }
+    console.log('wordsForDisplay : ',wordsForDisplay);
+    return wordsForDisplay
+}
 
 function getMeme() {
     return gMeme

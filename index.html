@@ -11,15 +11,16 @@
 <body onload="onInit()">
     <header class="main-header">
         <div class="header-container main-layout flex align-center space-between">
-            <div onclick="backToGallery()" class="logo">Meme Generator</div>
+            <div onclick="showGallery()" class="logo">Meme Generator</div>
             <ul class="main-nav-list flex clean-list">
-                <li onclick="backToGallery()"><a href="#">Gallery</a></li>
-                <li onclick="goToAbout()"><a href="#">About Me</a></li>
+                <li onclick="showGallery()"><a href="#">Gallery</a></li>
+                <li><a href="#about">About Me</a></li>
             </ul>
         </div>
     </header>
 
     <h2 class="gallery-h2">Gallery</h2>
+    <button onclick="renderRandomMeme()" class="button-55">Im Flexible!</button>
     <section class="gallery-container">
         <div class="photos">
         </div>
@@ -59,12 +60,37 @@
                 <button onclick="addLine()" class="add-line-btn button-55"><img class="icon icon-add-line"
                         src="icons/add.png"></button><br>
 
-                <a href="#" onclick="downloadCanvas(this)" class="download-btn button-55" src="icons/download-icon.png" download="cool-canvas">DownLoad!</a>
+                <a href="#" onclick="downloadCanvas(this)" class="download-btn button-55" src="icons/download-icon.png"
+                    download="cool-canvas">DownLoad!</a>
 
             </div>
         </div>
     </div>
 
+    <footer id="about" class="main-footer main-layout flex">
+        <div class="footer-container">
+            <h1 class="about-headline">About Me</h1>
+            <p class="about-paragraph"><img class="about-photo" src="/imgs/photo1.jpeg">Lorem ipsum dolor, sit amet
+                consectetur adipisicing elit. Error ex magnam amet sunt pariatur eveniet nobis quod, tempore at, ad quis
+                dignissimos velit qui voluptate temporibus dolorem provident expedita! Nemo quidem maiores molestiae
+                nisi illum, cumque iusto suscipit eaque accusamus quisquam qui aut expedita debitis beatae unde?
+                Cupiditate, possimus atque mollitia sapiente itaque dolore repellat tempore maxime qui voluptate
+                repudiandae quaerat recusandae asperiores perferendis quos adipisci fugit quia laborum natus consectetur
+                cumque! Quae, fugiat laboriosam velit voluptatibus eveniet, temporibus aut quasi asperiores in excepturi
+                maiores mollitia inventore, quos enim voluptatem laudantium nostrum delectus facilis nesciunt eos alias
+                nobis voluptate perspiciatis?</p>
+            <div class="social-links-container flex align-center ">
+                <small class="coffee-rights flex"> Find more about me in my Socials!
+                    <ul class=" ul-socials flex clear-list">
+                        <li><a target="_blank" class="fa facebook" href="https://facebook.com"></a></li>
+                        <li><a target="_blank" class="fa twitter" href="https://twitter.com"></a></li>
+                        <li><a target="_blank" class="fa instagram" href="https://instagram.com"></a></li>
+                        <li><a target="_blank" class="fa linkedIn" href="https://linkedIn.com"></a></li>
+                    </ul>
+            </div>
+    </footer>
+
+    <script src="js/service/utils.service.js"></script>
     <script src="js/service/meme.service.js"></script>
     <script src="js/service/gallery.service.js"></script>
     <script src="js/gallery.controller.js"></script>
