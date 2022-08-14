@@ -13,7 +13,7 @@
 
 .tool-bar .props {
     display: inline;
-    background-color: var(--clr2);
+    /* background-color: var(--clr2); */
     flex-direction: column;
     width: 520px;
     height: 494px;

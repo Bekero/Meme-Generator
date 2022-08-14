@@ -14,12 +14,12 @@ gallery: {
         he: 'ייצור מימים'
     },
     flexible: {
-        en: 'Im Flexible',
-        he: 'אני גמיש'
+        en: 'Random meme',
+        he: 'מימ רנדומלי'
     },
     canvas: {
         en: 'canvas',
-        he: 'כותרת'
+        he: 'קנבס'
     },
     'text-color': {
         en: 'text-color',
@@ -43,7 +43,13 @@ gallery: {
     },
     'find-more-in': {
         en: 'Find more about me in my Socials!',
-        he: 'מצא יותר עליי ברשתות החברתיות!ת'
+        he: '!מצא עליי יותר ברשתות החברתיות'
+    },
+    'about-me-p': {
+        en: `My name is Or Beker I'm 22 years old , Love Beer, Music & Friends,
+        And now at the middle of Coding Academy course!`,
+        he: `שמי אור בקר אני בן 22, אוהב בירה מוזיקה וחברים, 
+        !ועכשיו באמצע הקורס של קודינג אקדמי`
     }
 }
 

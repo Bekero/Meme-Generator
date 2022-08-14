@@ -4,7 +4,7 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 const randomSentences = ['I’ll be there', 'Holy Molly', 'Thats Cool Man',
     'Really?', 'thats stupid', 'Maybe you’re right.', 'nah...',
     'Nah mate', 'Ok thats funny', 'SMORT', 'Yea, but why?',
-    'Sheeeeeeesh', 'C\'mon man', 'Really?', 'Yes!', 'Nah', 'Thats right', 'Thats not good',
+    'Sheesh', 'C\'mon man', 'Really?', 'Yes!', 'Nah', 'Thats right', 'Thats not good',
     'Its cool', 'Pineapple-Pen!', 'Is that you', 'Donald Trump !!', 'Toilet paper', 'Im Happy', 'Oh no!', 'Flikamora', 'Are you ready ?', 'Yheayyyy']
 let gElCanvas
 let gCtx
@@ -27,13 +27,8 @@ function renderMeme() {
 
     gCtx.drawImage(gCurrImg, 0, 0)
     meme.lines.forEach((line, idx) => {
-        // gCtx.drawImage(meme.selectedImgId, 0, 0)
         drawText(line.txt, idx)
     })
-    // gCtx.drawImage(meme.selectedImgId, 0, 0, gElCanvas.width, gElCanvas.height)
-    // meme.lines.map((line, idx) => {
-    //     return drawText(line.txt, idx)
-    // })
 }
 
 function hideGallery(clickedImg) {
@@ -54,18 +49,13 @@ function hideGallery(clickedImg) {
 }
 
 function initImg(imgId) {
+    console.log('imgId : ',imgId);
     let meme = getMeme()
     const img = new Image();
     img.src = `imgs/${imgId}.jpg`
     img.onload = () => {
         gCurrImg = img
         renderMeme()
-        // gCtx.drawImage(meme.selectedImgId, 0, 0)
-        //    onInit()
-        // meme.lines.map((line, idx) => {
-        //     // gCtx.drawImage(meme.selectedImgId, 0, 0)
-        //     return drawText(line.txt, idx)
-        // })
     };
     meme.selectedImgId = imgId
     gElCanvas.height = img.height
@@ -97,9 +87,7 @@ function drawText(txt, lineIdx) {
     else {
             gCtx.fillText(txt, canvas.width / 2, canvas.height / 2);
             gCtx.strokeText(txt, canvas.width / 2, canvas.height / 2);
-
     }
-
 
     // if (lineIdx === 0) {
     //     if(!pos.x && !pos.y) {
@@ -299,6 +287,7 @@ function getEvPos(ev) {
     }
     return pos
 }
+
 
 function moveText(dx, dy) {
     gMeme.lines[gMeme.selectedLineIdx].posX += dx
