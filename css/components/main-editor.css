@@ -1,0 +1,54 @@
+/* Main - Editor - Container --- Tool Bar */
+/* Main - Canvas */
+
+.editor-container {
+    height: 75vh;
+}
+
+.tool-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tool-bar .props {
+    display: inline;
+    background-color: var(--clr2);
+    flex-direction: column;
+    width: 520px;
+    height: 494px;
+}
+
+.tool-bar .props>* {
+    /* width: 60px; */
+    height: 50px;
+    padding: 2px;
+}
+
+.tool-bar .main-text {
+    cursor: revert;
+    width: 160px;
+    height: 50px;
+}
+
+.tool-bar .download-btn  {
+    cursor: revert;
+    font-weight: bold;
+    width: 106px;
+    height: 30px
+}
+
+
+.font-number {
+    font-weight: bold;
+}
+
+.font-size-btn {
+    background-color: rgba(219, 193, 193, 0);
+    cursor: pointer;
+    border: none;
+}
+
+.icon {
+    width: 30px;
+}

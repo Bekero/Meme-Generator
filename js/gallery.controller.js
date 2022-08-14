@@ -1,23 +1,23 @@
 'use strict'
 
 function renderGallery() {
-    var strHtmls = ''
-    var elGallery = document.querySelector('.photos')
-    gImgs.forEach(img => {
-        strHtmls += `<img onclick="hideGallery(${img.id})" src="${img.url}">`
+    // var strHtmls = ''
+    const elGallery = document.querySelector('.photos-container')
+    const strHtmls = gImgs.map(img => {
+        return `<img onclick="hideGallery(${img.id})" src="${img.url}">`
     })
-    elGallery.innerHTML = strHtmls
+    elGallery.innerHTML = strHtmls.join('')
 }
 
 function showGallery() {
-    var elEditor = document.querySelector('.editor-container')
-    var elGallery = document.querySelector('.gallery-container')
-    var elH2Canvas = document.querySelector('.canvas-h2')
-    var elH2Gallery = document.querySelector('.gallery-h2')
+    const elEditor = document.querySelector('.editor-container')
+    const elGallery = document.querySelector('.gallery-container')
+    const elH2Canvas = document.querySelector('.canvas-h2')
+    const elH2Gallery = document.querySelector('.gallery-h2')
 
     elEditor.style.display = 'none';
     elH2Canvas.style.display= 'none'
 
-    elGallery.style.display = 'flex';
+    elGallery.style.display = 'block';
     elH2Gallery.style.display= 'flex'
 }

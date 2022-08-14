@@ -1,0 +1,51 @@
+/* HELPERS */
+/* Flex Helpers */
+.flex {
+    display: flex;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+/* List Helpers */
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.logo {
+    font-size: 2.5em;
+    color: var(--clr5);
+}
+
+.logo span {
+    font-weight: bold;
+    color: var(--clr3);
+}
+
+.inline-start {
+    margin-inline-start: 25px;
+}
+
+.inline-end {
+    margin-inline-start: 25px;
+}
+
+.flexible-btn {
+    background-color: #586a7a;
+    font-weight: bold;
+    border: #ebffad;
+}
+
+.set-lang {
+    float: right;
+    background-color: #586a7a;
+    top: 27px;
+}

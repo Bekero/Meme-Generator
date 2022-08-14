@@ -1,0 +1,18 @@
+/* SETUP */
+/* vars */
+
+:root {
+
+    /* Color Plates */
+    --clr1: #4c6c5c;
+    --clr2: #b1a58e;
+    --clr3: #ffffff;
+    --clr4: #000000;
+    --clr5: #1e1d1d;
+
+    /* mq variables */
+
+    --small: 450px;
+    --medium: 800px;
+    --large: 1050px;
+}

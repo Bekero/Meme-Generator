@@ -1,0 +1,28 @@
+/* BASICS */
+/* base */
+
+body {
+    background-color: var(--clr5);
+    /* background-color: var(--clr1); */
+    margin: 0;
+    height: 100vh;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    box-shadow: -6px -4px 11px #8aa78396;
+    border: 2px solid #857272;
+}
+
+h2,
+.canvas-h2,
+.gallery-h2 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    font-family: montserratItalic;
+    box-shadow: 2px 0px 12px #403939;
+    color: wheat;
+}

@@ -1,0 +1,43 @@
+/* BASICS */
+/* Main - Header */
+
+.main-header {
+    height: 110px;
+    width: 100%;
+    margin-right: 0;
+}
+
+.header-container {
+    height: 100%;
+    background-color: var(--clr5);
+    box-shadow: 0px 0px 20px 8px #d2d9d605;
+    /* color: #5EE4A1; */
+}
+
+.main-header .main-nav-list {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+}
+
+.main-header .main-nav-list a {
+    text-decoration: none;
+    color: var(--clr2);
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 6rem;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.main-header .main-nav-list a:hover {
+    color: var(--clr3);
+    border-bottom: 4px solid var(--clr3);
+}
+
+.logo {
+    color: var(--clr2);
+    cursor: pointer;
+    font-family: rubik;
+}
