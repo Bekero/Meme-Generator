@@ -36,6 +36,7 @@ function hideGallery(clickedImg) {
     const elGallery = document.querySelector('.gallery-container')
     const elH2Canvas = document.querySelector('.canvas-h2')
     const elH2Gallery = document.querySelector('.gallery-h2')
+        const elRandomBtn = document.querySelector('.flexible-div')
 
     let img = gImgs.find(img => {
         if (img.id === clickedImg) return img
@@ -45,6 +46,9 @@ function hideGallery(clickedImg) {
 
     elH2Gallery.style.display = 'none'
     elGallery.style.display = 'none';
+
+    elRandomBtn.style.display = 'none'
+
     initImg(img.id)
 }
 

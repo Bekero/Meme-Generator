@@ -18,7 +18,7 @@ gallery: {
         he: 'מימ רנדומלי'
     },
     canvas: {
-        en: 'canvas',
+        en: 'Canvas',
         he: 'קנבס'
     },
     'text-color': {

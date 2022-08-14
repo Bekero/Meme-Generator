@@ -14,10 +14,13 @@ function showGallery() {
     const elGallery = document.querySelector('.gallery-container')
     const elH2Canvas = document.querySelector('.canvas-h2')
     const elH2Gallery = document.querySelector('.gallery-h2')
+    const elRandomBtn = document.querySelector('.flexible-div')
 
     elEditor.style.display = 'none';
-    elH2Canvas.style.display= 'none'
+    elH2Canvas.style.display = 'none'
 
     elGallery.style.display = 'block';
-    elH2Gallery.style.display= 'flex'
+    elH2Gallery.style.display = 'flex'
+
+    elRandomBtn.style.display = 'flex'
 }
