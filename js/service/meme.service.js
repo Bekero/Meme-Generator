@@ -31,7 +31,7 @@ function createMeme(id) {
         selectedLineIdx: 0,
         lines: [
             {
-                txt: '',
+                txt: 'Place',
                 size: 20,
                 align: 'center',
                 fontSize: 50,
@@ -42,7 +42,7 @@ function createMeme(id) {
                 isDrag: false
             },
             {
-                txt: '',
+                txt: 'Holder',
                 size: 20,
                 align: 'center',
                 fontSize: 70,
@@ -116,12 +116,14 @@ function setChangeLine() {
     else gMeme.selectedLineIdx = 0
 }
 
-function isTextClicked(clickedPos) {
-    const { posX, posY } = gMeme.lines[gMeme.selectedLineIdx]
-    gCtx.font = gMeme.lines[gMeme.selectedLineIdx].fontSize
-    const txt = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
-    const distance = Math.sqrt((posX - clickedPos.x) ** 2 + (posY - clickedPos.y) ** 2)
-    return distance <= txt.width
+function isTextClicked(meme, clickedPos) {
+    return meme.lines.find((line, idx) => {
+        console.log(Math.sqrt((line.posX - clickedPos.x) ** 2 + (line.posY - clickedPos.y) ** 2), gCtx.measureText(line.txt).width)
+        if (Math.sqrt((line.posX - clickedPos.x) ** 2 + (line.posY - clickedPos.y) ** 2) <= gCtx.measureText(line.txt).width) {
+            meme.selectedLineIdx = idx
+            return true
+        }
+    })
 }
 
 function setRandomMeme() {

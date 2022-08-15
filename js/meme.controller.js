@@ -9,6 +9,7 @@ const randomSentences = ['I’ll be there', 'Holy Molly', 'Thats Cool Man',
 let gElCanvas
 let gCtx
 let gIsDrag
+let gClickedLine
 
 function onInit() {
     gElCanvas = document.querySelector('#my-canvas');
@@ -26,8 +27,8 @@ function renderMeme() {
     let meme = getMeme()
 
     gCtx.drawImage(gCurrImg, 0, 0)
-    meme.lines.forEach((line, idx) => {
-        drawText(line.txt, idx)
+    meme.lines.forEach((line) => {
+        drawText(line)
     })
 }
 
@@ -66,60 +67,20 @@ function initImg(imgId) {
     gElCanvas.width = img.width
 }
 
-function drawText(txt, lineIdx) {
+function drawText(line) {
     let canvas = getCanvas()
     let meme = getMeme();
-    let fontSize = meme.lines[lineIdx].fontSize
-    let pos = { x: meme.lines[meme.selectedLineIdx].posX, y: meme.lines[meme.selectedLineIdx].posY }
+    let fontSize = line.fontSize
+    console.log(meme.selectedLineIdx)
     gCtx.beginPath();
     gCtx.textBaseline = 'middle';
-    gCtx.textAlign = meme.lines[lineIdx].align;
+    gCtx.textAlign = line.align;
     gCtx.lineWidth = 2;
     gCtx.font = fontSize + 'px impact';
-    gCtx.fillStyle = meme.lines[lineIdx].txtColor;
-    gCtx.strokeStyle = meme.lines[lineIdx].borderColor;
-
-    if (lineIdx === 0) {
-            gCtx.fillText(txt, canvas.width / 2, 40);
-            gCtx.strokeText(txt, canvas.width / 2, 40);
-    }
-    else if (lineIdx === 1) {
-            gCtx.fillText(txt, canvas.width / 2, canvas.height - 40);
-            gCtx.strokeText(txt, canvas.width / 2, canvas.height - 40);
-
-    }
-    else {
-            gCtx.fillText(txt, canvas.width / 2, canvas.height / 2);
-            gCtx.strokeText(txt, canvas.width / 2, canvas.height / 2);
-    }
-
-    // if (lineIdx === 0) {
-    //     if(!pos.x && !pos.y) {
-    //         gCtx.fillText(txt, canvas.width / 2, 40);
-    //         gCtx.strokeText(txt, canvas.width / 2, 40);
-    //     } else {
-    //         gCtx.fillText(txt, pos.x, pos.y)
-    //         gCtx.strokeText(txt, pos.x, pos.y);
-    //     }
-    // }
-    // else if (lineIdx === 1) {
-    //     if(!pos.x && !pos.y) {
-    //         gCtx.fillText(txt, canvas.width / 2, canvas.height - 40);
-    //         gCtx.strokeText(txt, canvas.width / 2, canvas.height - 40);
-    //     } else {
-    //         gCtx.fillText(txt, pos.x, pos.y)
-    //         gCtx.strokeText(txt, pos.x, pos.y);
-    //     }
-    // }
-    // else {
-    //     if(!pos.x && !pos.y) {
-    //         gCtx.fillText(txt, canvas.width / 2, canvas.height / 2);
-    //         gCtx.strokeText(txt, canvas.width / 2, canvas.height / 2);
-    //     } else {
-    //         gCtx.fillText(txt, pos.x, pos.y)
-    //         gCtx.strokeText(txt, pos.x, pos.y);
-    //     }
-    // }
+    gCtx.fillStyle = line.txtColor;
+    gCtx.strokeStyle = line.borderColor;
+    gCtx.fillText(line.txt, line.posX, line.posY)
+    gCtx.strokeText(line.txt, line.posX, line.posY)
     gCtx.closePath();
 }
 
@@ -243,7 +204,8 @@ function onDown(ev) {
     let meme = getMeme()
     const pos = getEvPos(ev)
     // { x: 15, y : 15 }
-    if (!isTextClicked(pos)) return
+    if ( !isTextClicked(meme, pos)) return
+    console.log('down')
     setTextDrag(true)
     // meme.lines[meme.selectedLineIdx].posX = pos.x
     // meme.lines[meme.selectedLineIdx].posY = pos.y
@@ -252,8 +214,8 @@ function onDown(ev) {
 
 function onMove(ev) {
     const meme = getMeme();
-    // if (!gIsDrag) return
-    if (!meme.lines[meme.selectedLineIdx].isDrag) return
+    if (!gIsDrag) return
+    // if (!meme.lines[meme.selectedLineIdx].isDrag) return
     const pos = getEvPos(ev)
     // const dx = pos.x - meme.lines[meme.selectedLineIdx].posX
     // const dy = pos.y - meme.lines[meme.selectedLineIdx].posY
@@ -268,11 +230,12 @@ function onUp() {
     document.querySelector('.my-canvas').style.cursor = 'grab'
 }
 
-function setTextDrag(diff) {
-    // gIsDrag = boolean
+function setTextDrag(isDrag) {
+    gIsDrag = isDrag
+    if(!isDrag) return
+
     let meme = getMeme()
-    console.log('gMeme.lines[gMeme.selectedLineIdx].isDrag : ', meme.lines[meme.selectedLineIdx].isDrag);
-    meme.lines[meme.selectedLineIdx].isDrag = diff
+    meme.lines[meme.selectedLineIdx].isDrag = isDrag
 }
 
 function getEvPos(ev) {

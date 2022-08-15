@@ -12,6 +12,7 @@
 /* CSS */
 .button-55 {
     align-self: center;
+    width: 55px;
     background-color: #fff;
     background-image: none;
     background-position: 0 90%;
@@ -27,7 +28,7 @@
     display: inline-block;
     font-family: Neucha, sans-serif;
     font-size: 1rem;
-    line-height: 23px;
+    line-height: 13px;
     outline: none;
     padding: .75rem;
     text-decoration: none;
